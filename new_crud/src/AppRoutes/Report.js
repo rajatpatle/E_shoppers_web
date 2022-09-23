@@ -3,7 +3,7 @@ import React from 'react'
 function Report() {
   return (
     <div>
-      <h1 className='text-primary'>Report Page</h1>
+      <h1 className='text-primary'>Generate Report</h1>
     </div>
   )
 }
