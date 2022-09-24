@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
 
 export default function Table({ list, total }) {
   return (
     <>
-      <table width="100%" className="mb-10">
+      <table width="100%" className="mb-10 table table-light">
         <thead>
           <tr className="bg-gray-100 p-1">
             <td className="font-bold">Description</td>
@@ -32,5 +32,5 @@ export default function Table({ list, total }) {
         </h2>
       </div>
     </>
-  )
+  );
 }

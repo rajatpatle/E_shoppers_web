@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai"
-import { v4 as uuidv4 } from "uuid"
-import { toast, ToastContainer } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import React, { useState, useEffect } from "react";
+import { AiFillDelete, AiOutlineEdit } from "react-icons/ai";
+import { v4 as uuidv4 } from "uuid";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function TableForm({
   description,
@@ -18,14 +18,14 @@ export default function TableForm({
   total,
   setTotal,
 }) {
-  const [isEditing, setIsEditing] = useState(false)
+  const [isEditing, setIsEditing] = useState(false);
 
   // Submit form function
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!description || !quantity || !price) {
-      toast.error("Please fill in all inputs")
+      toast.error("Please fill in all inputs");
     } else {
       const newItems = {
         id: uuidv4(),
@@ -33,60 +33,60 @@ export default function TableForm({
         quantity,
         price,
         amount,
-      }
-      setDescription("")
-      setQuantity("")
-      setPrice("")
-      setAmount("")
-      setList([...list, newItems])
-      setIsEditing(false)
+      };
+      setDescription("");
+      setQuantity("");
+      setPrice("");
+      setAmount("");
+      setList([...list, newItems]);
+      setIsEditing(false);
     }
-  }
+  };
 
   // Calculate items amount function
   useEffect(() => {
     const calculateAmount = (amount) => {
-      setAmount(quantity * price)
-    }
+      setAmount(quantity * price);
+    };
 
-    calculateAmount(amount)
-  }, [amount, price, quantity, setAmount])
+    calculateAmount(amount);
+  }, [amount, price, quantity, setAmount]);
 
   // Calculate total amount of items in table
   useEffect(() => {
-    let rows = document.querySelectorAll(".amount")
-    let sum = 0
+    let rows = document.querySelectorAll(".amount");
+    let sum = 0;
 
     for (let i = 0; i < rows.length; i++) {
       if (rows[i].className === "amount") {
-        sum += isNaN(rows[i].innerHTML) ? 0 : parseInt(rows[i].innerHTML)
-        setTotal(sum)
+        sum += isNaN(rows[i].innerHTML) ? 0 : parseInt(rows[i].innerHTML);
+        setTotal(sum);
       }
     }
-  })
+  });
 
   // Edit function
   const editRow = (id) => {
-    const editingRow = list.find((row) => row.id === id)
-    setList(list.filter((row) => row.id !== id))
-    setIsEditing(true)
-    setDescription(editingRow.description)
-    setQuantity(editingRow.quantity)
-    setPrice(editingRow.price)
-  }
+    const editingRow = list.find((row) => row.id === id);
+    setList(list.filter((row) => row.id !== id));
+    setIsEditing(true);
+    setDescription(editingRow.description);
+    setQuantity(editingRow.quantity);
+    setPrice(editingRow.price);
+  };
 
   // Delete function
-  const deleteRow = (id) => setList(list.filter((row) => row.id !== id))
+  const deleteRow = (id) => setList(list.filter((row) => row.id !== id));
 
   return (
     <>
-
-    <ToastContainer position="top-right" theme="colored" />
+      <ToastContainer position="top-right" theme="colored" />
 
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col md:mt-16">
           <label htmlFor="description">Item description</label>
           <input
+            className="form-control"
             type="text"
             name="description"
             id="description"
@@ -95,11 +95,12 @@ export default function TableForm({
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-
+        <br></br>
         <div className="md:grid grid-cols-3 gap-10">
           <div className="flex flex-col">
             <label htmlFor="quantity">Quantity</label>
             <input
+              className="form-control"
               type="text"
               name="quantity"
               id="quantity"
@@ -108,10 +109,11 @@ export default function TableForm({
               onChange={(e) => setQuantity(e.target.value)}
             />
           </div>
-
+          <br></br>
           <div className="flex flex-col">
             <label htmlFor="price">Price</label>
             <input
+              className="form-control"
               type="text"
               name="price"
               id="price"
@@ -120,29 +122,32 @@ export default function TableForm({
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
-
+          <br></br>
           <div className="flex flex-col">
-            <label htmlFor="amount">Amount</label>
-            <p>{amount}</p>
+            <label htmlFor="amount">
+              <h4>Amount</h4>
+            </label>
+            <p style={{ color: "green" }}>
+              <h4>{amount}</h4>
+            </p>
           </div>
         </div>
-        <button
-          type="submit"
-          className="mb-5 bg-blue-500 text-primary font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300"
-        >
+        <button type="submit" className="btn btn-outline-primary">
           {isEditing ? "Editing Row Item" : "Add Table Item"}
         </button>
       </form>
-      
+      <br></br>
       {/* Table items */}
 
-      <table width="100%" className="mb-10">
+      <table width="100%" className="mb-10 table table-light">
         <thead>
           <tr className="bg-gray-100 p-1">
             <td className="font-bold">Description</td>
             <td className="font-bold">Quantity</td>
             <td className="font-bold">Price</td>
             <td className="font-bold">Amount</td>
+            <td className="font-bold">Edit</td>
+            <td className="font-bold">Delete</td>
           </tr>
         </thead>
         {list.map(({ id, description, quantity, price, amount }) => (
@@ -160,7 +165,7 @@ export default function TableForm({
                 </td>
                 <td>
                   <button onClick={() => deleteRow(id)}>
-                    <AiOutlineDelete className="text-red-500 font-bold text-xl" />
+                    <AiFillDelete className="text-red-500 font-bold text-xl" />
                   </button>
                 </td>
               </tr>
@@ -170,10 +175,8 @@ export default function TableForm({
       </table>
 
       <div>
-        <h2 className="flex items-end justify-end text-gray-800 text-4xl font-bold">
-          Total Bill Amount: {total.toLocaleString()}
-        </h2>
+        <h5>Total Bill Amount: {total.toLocaleString()}</h5>
       </div>
     </>
-  )
+  );
 }

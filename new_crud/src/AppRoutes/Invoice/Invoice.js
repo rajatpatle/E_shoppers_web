@@ -1,16 +1,14 @@
-import React from 'react'
-import { useState, useRef, useEffect } from "react"
-import Dates from "./Dates"
-import Footer from "./Footer"
-import Header from "./Header"
-import MainDetails from "./MainDetails"
-import Notes from "./Notes"
-import Table from "./Table"
-import TableForm from "./TableForm"
-import ReactToPrint from "react-to-print"
-import ClientDetails from './ClientDetails'
-
-
+import React from "react";
+import { useState, useRef, useEffect } from "react";
+import Dates from "./Dates";
+import Footer from "./Footer";
+import Header from "./Header";
+import MainDetails from "./MainDetails";
+import Notes from "./Notes";
+import Table from "./Table";
+import TableForm from "./TableForm";
+import ReactToPrint from "react-to-print";
+import ClientDetails from "./ClientDetails";
 
 function Invoice() {
   // const [name, setName] = useState("")
@@ -20,45 +18,45 @@ function Invoice() {
   // const [bankName, setBankName] = useState("")
   // const [bankAccount, setBankAccount] = useState("")
   // const [website, setWebsite] = useState("")
-  const [clientName, setClientName] = useState("")
-  const [clientAddress, setClientAddress] = useState("")
-  const [invoiceNumber, setInvoiceNumber] = useState("")
-  const [invoiceDate, setInvoiceDate] = useState("")
-  const [dueDate, setDueDate] = useState("")
-  const [notes, setNotes] = useState("")
-  const [description, setDescription] = useState("")
-  const [quantity, setQuantity] = useState("")
-  const [price, setPrice] = useState("")
-  const [amount, setAmount] = useState("")
-  const [list, setList] = useState([])
-  const [total, setTotal] = useState(0)
-  const [width] = useState(641)
+  const [clientId, setClientName] = useState("");
+  const [clientAddress, setClientAddress] = useState("");
+  const [invoiceNumber, setInvoiceNumber] = useState("");
+  const [invoiceDate, setInvoiceDate] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [notes, setNotes] = useState("");
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [price, setPrice] = useState("");
+  const [amount, setAmount] = useState("");
+  const [list, setList] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [width] = useState(641);
 
-  const componentRef = useRef()
+  const componentRef = useRef();
 
   const handlePrint = () => {
-    window.print()
-  }
+    window.print();
+  };
 
   useEffect(() => {
     if (window.innerWidth < width) {
-      alert("Place your phone in landscape mode for the best experience")
+      alert("Place your phone in landscape mode for the best experience");
     }
-  }, [width])
+  }, [width]);
 
   return (
     <>
-      <div className="container">
+      {/* <div className="container">
         <p className="text-white font-bold uppercase tracking-widest">Beta</p>
-      </div>
-      <main className="m-5 p-5 xl:grid grid-cols-2 gap-10 xl:items-start">
+      </div> */}
+      <main className="container">
         <section>
-        <h2 className='text-primary'>Customer Invoice</h2>
-          <div className="bg-white p-5 rounded shadow row col-md-7">
+          <h2 className="text-primary">Customer Invoice</h2>
+          <div className="bg-white p-5 rounded shadow ">
             {/* name, address, email, phone, bank name, bank account number, website client name, client address, invoice number, invoice date, due date, notes */}
-            <div className="flex flex-col justify-center">
+            <div className="container">
               {/* <article className="md:grid grid-cols-2 gap-10"> */}
-                {/* <div className="flex flex-col">
+              {/* <div className="flex flex-col">
                   <label htmlFor="name">Your full name</label>
                   <input className='form-control'
                     type="text"
@@ -158,23 +156,39 @@ function Invoice() {
 
               <article className="md:grid grid-cols-2 gap-10 md:mt-16">
                 <div className="flex flex-col">
-                  <label htmlFor="clientName">Enter your client's name</label>
+                  {/* <label htmlFor="invoiceNumber">Invoice Number</label> */}
                   <input
+                    className="form-control"
                     type="text"
+                    name="invoiceNumber"
+                    id="invoiceNumber"
+                    placeholder="Invoice ID"
+                    autoComplete="off"
+                    value={invoiceNumber}
+                    onChange={(e) => setInvoiceNumber(e.target.value)}
+                  />
+                </div>
+                <br></br>
+                <div className="flex flex-col">
+                  {/* <label htmlFor="clientName">Enter your client's name</label> */}
+                  <input
+                    className="form-control"
+                    type="number"
                     name="clientName"
                     id="clientName"
-                    placeholder="Enter your client's name"
+                    placeholder="Customer ID"
                     autoComplete="off"
-                    value={clientName}
+                    value={clientId}
                     onChange={(e) => setClientName(e.target.value)}
                   />
                 </div>
-
+                {/* <br></br> */}
                 <div className="flex flex-col">
-                  <label htmlFor="clientAddress">
+                  {/* <label htmlFor="clientAddress">
                     Enter your client's address
-                  </label>
-                  <input
+                  </label> */}
+                  {/* <input
+                    className="form-control"
                     type="text"
                     name="clientAddress"
                     id="clientAddress"
@@ -182,27 +196,17 @@ function Invoice() {
                     autoComplete="off"
                     value={clientAddress}
                     onChange={(e) => setClientAddress(e.target.value)}
-                  />
+                  /> */}
                 </div>
               </article>
+              <br></br>
 
               <article className="md:grid grid-cols-3 gap-10">
-                <div className="flex flex-col">
-                  <label htmlFor="invoiceNumber">Invoice Number</label>
-                  <input
-                    type="text"
-                    name="invoiceNumber"
-                    id="invoiceNumber"
-                    placeholder="Invoice Number"
-                    autoComplete="off"
-                    value={invoiceNumber}
-                    onChange={(e) => setInvoiceNumber(e.target.value)}
-                  />
-                </div>
-
+                {/* <br></br> */}
                 <div className="flex flex-col">
                   <label htmlFor="invoiceDate">Invoice Date</label>
                   <input
+                    className="form-control"
                     type="date"
                     name="invoiceDate"
                     id="invoiceDate"
@@ -212,10 +216,11 @@ function Invoice() {
                     onChange={(e) => setInvoiceDate(e.target.value)}
                   />
                 </div>
-
+                <br></br>
                 <div className="flex flex-col">
                   <label htmlFor="dueDate">Due Date</label>
                   <input
+                    className="form-control"
                     type="date"
                     name="dueDate"
                     id="dueDate"
@@ -226,7 +231,7 @@ function Invoice() {
                   />
                 </div>
               </article>
-
+              <br></br>
               {/* This is our table form */}
               <article>
                 <TableForm
@@ -245,11 +250,11 @@ function Invoice() {
                 />
               </article>
 
-              <label htmlFor="notes">Additional Notes</label>
+              {/* <label htmlFor="notes">Additional Notes</label> */}
               <textarea
                 name="notes"
                 id="notes"
-                cols="30"
+                cols="132"
                 rows="10"
                 placeholder="Additional notes to the client"
                 value={notes}
@@ -265,12 +270,13 @@ function Invoice() {
             </div>
           </div>
         </section>
+        <br></br>
 
         {/* Invoice Preview */}
         <div className="invoice__preview bg-white p-5 rounded">
           <ReactToPrint
             trigger={() => (
-              <button className="bg-blue-500 ml-5 text-primary font-bold py-2 px-8 rounded shadow border-2 border-blue-500 hover:bg-transparent hover:text-blue-500 transition-all duration-300">
+              <button className="btn btn-outline-primary">
                 Print / Download
               </button>
             )}
@@ -279,10 +285,10 @@ function Invoice() {
           <div ref={componentRef} className="p-5">
             <Header handlePrint={handlePrint} />
 
-            <MainDetails/>
+            <MainDetails />
 
             <ClientDetails
-              clientName={clientName}
+              clientName={clientId}
               clientAddress={clientAddress}
             />
 
@@ -306,13 +312,13 @@ function Invoice() {
             <Notes notes={notes} />
 
             <Footer
-              // name={name}
-              // address={address}
-              // website={website}
-              // email={email}
-              // phone={phone}
-              // bankAccount={bankAccount}
-              // bankName={bankName}
+            // name={name}
+            // address={address}
+            // website={website}
+            // email={email}
+            // phone={phone}
+            // bankAccount={bankAccount}
+            // bankName={bankName}
             />
           </div>
           {/* <button
@@ -324,8 +330,6 @@ function Invoice() {
         </div>
       </main>
     </>
-  )
-
+  );
 }
- export default Invoice
-
+export default Invoice;
