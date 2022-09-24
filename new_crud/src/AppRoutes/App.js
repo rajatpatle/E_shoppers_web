@@ -6,7 +6,7 @@ import Contact from './Contact';
 import Display from './Product';
 import ErrorPage from './ErrorPage';
 import Home from './Home';
-import MyService from './MyService';
+import Invoice from './Invoice/Invoice';
 import User from './Customer';
 import Inventory from './Inventory';
 import Vendor from './Vendor';
@@ -66,16 +66,16 @@ function App() {
                     
                     <NavDropdown title="Invoice">
                           <NavDropdown.Item>
-                            <NavLink to="user" className="me-auto">Add Invoice</NavLink>
+                            <NavLink to="invoice" className="me-auto">Add Invoice</NavLink>
                           </NavDropdown.Item>
                           <NavDropdown.Divider />
-                          <NavDropdown.Item>
+                          {/* <NavDropdown.Item>
                             <NavLink to="user">Print Invoice</NavLink>
                           </NavDropdown.Item>
                           <NavDropdown.Divider />
                           <NavDropdown.Item>
                             <NavLink to="user">Send Invoice</NavLink>
-                          </NavDropdown.Item>
+                          </NavDropdown.Item> */}
                         </NavDropdown>
                     </li>
                     <li className="nav-item">
@@ -168,7 +168,7 @@ function App() {
                 <Route path='/register' element={<RegistrationForm/>}></Route>
                 <Route path='/reset' element={<PasswordResetForm/>}></Route>
                 <Route path='/login' element={<LoginForm/>}></Route>
-                <Route path='/service' element={<MyService/>}></Route>
+                <Route path='/invoice' element={<Invoice/>}></Route>
                 <Route path='/user' element={<User/>}></Route>
                 <Route path='/display' element={<Display/>}></Route>
                 <Route path='/about' element={<About/>}></Route>
