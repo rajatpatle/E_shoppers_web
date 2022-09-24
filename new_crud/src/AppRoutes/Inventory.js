@@ -6,8 +6,20 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 
 export const productsGenerator = (quantity) => {
   const items = [];
-  for (let i = 0; i < quantity; i++) {
-    items.push({ id: i, name: `Item name ${i}`, price: 2100 + i });
+  for (let i = 1; i < quantity; i++) {
+    items.push({
+      id: i,
+      P_name: `Item name ${i}`,
+      p_image: `image ${i}`,
+      category: `category ${i}`,
+      p_price: `prize ${i}`,
+      vendor: `vendor ${i}`,
+      p_stock: `stock ${i}`,
+      unit: `unit ${i}`,
+      re_order: `reorder ${i}`,
+      discount: `discount ${i}`,
+      gst: `gst ${i}`,
+    });
   }
   return items;
 };
@@ -20,14 +32,51 @@ const columns = [
     text: "Product ID",
     sort: true,
   },
+
   {
-    dataField: "name",
+    dataField: "P_name",
     text: "Product Name",
     sort: true,
   },
   {
-    dataField: "price",
+    dataField: "p_image",
+    text: "Product Image",
+    sort: true,
+  },
+  {
+    dataField: "category",
+    text: "Product Category",
+    sort: true,
+  },
+  {
+    dataField: "p_price",
     text: "Product Price",
+  },
+  {
+    dataField: "vendor",
+    text: "Vendor",
+    sort: true,
+  },
+
+  {
+    dataField: "p_stock",
+    text: "Product Stock",
+    sort: true,
+  },
+  {
+    dataField: "unit",
+    text: "Product Unit",
+    sort: true,
+  },
+  {
+    dataField: "re_order",
+    text: "Re_order",
+    sort: true,
+  },
+  {
+    dataField: "gst",
+    text: "GST",
+    sort: true,
   },
 ];
 export default function Inventory() {
