@@ -133,7 +133,7 @@ export default function TableForm({
           {isEditing ? "Editing Row Item" : "Add Table Item"}
         </button>
       </form>
-
+      
       {/* Table items */}
 
       <table width="100%" className="mb-10">

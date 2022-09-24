@@ -13,13 +13,13 @@ import ClientDetails from './ClientDetails'
 
 
 function Invoice() {
-  const [name, setName] = useState("")
-  const [address, setAddress] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-  const [bankName, setBankName] = useState("")
-  const [bankAccount, setBankAccount] = useState("")
-  const [website, setWebsite] = useState("")
+  // const [name, setName] = useState("")
+  // const [address, setAddress] = useState("")
+  // const [email, setEmail] = useState("")
+  // const [phone, setPhone] = useState("")
+  // const [bankName, setBankName] = useState("")
+  // const [bankAccount, setBankAccount] = useState("")
+  // const [website, setWebsite] = useState("")
   const [clientName, setClientName] = useState("")
   const [clientAddress, setClientAddress] = useState("")
   const [invoiceNumber, setInvoiceNumber] = useState("")
@@ -57,8 +57,8 @@ function Invoice() {
           <div className="bg-white p-5 rounded shadow row col-md-7">
             {/* name, address, email, phone, bank name, bank account number, website client name, client address, invoice number, invoice date, due date, notes */}
             <div className="flex flex-col justify-center">
-              <article className="md:grid grid-cols-2 gap-10">
-                <div className="flex flex-col">
+              {/* <article className="md:grid grid-cols-2 gap-10"> */}
+                {/* <div className="flex flex-col">
                   <label htmlFor="name">Your full name</label>
                   <input className='form-control'
                     type="text"
@@ -83,9 +83,9 @@ function Invoice() {
                     onChange={(e) => setAddress(e.target.value)}
                   />
                 </div>
-              </article>
+              </article> */}
 
-              <article className="md:grid grid-cols-3 gap-10">
+              {/* <article className="md:grid grid-cols-3 gap-10">
                 <div className="flex flex-col">
                   <label htmlFor="email">Enter your email</label>
                   <input
@@ -154,7 +154,7 @@ function Invoice() {
                     onChange={(e) => setBankAccount(e.target.value)}
                   />
                 </div>
-              </article>
+              </article> */}
 
               <article className="md:grid grid-cols-2 gap-10 md:mt-16">
                 <div className="flex flex-col">
@@ -279,7 +279,7 @@ function Invoice() {
           <div ref={componentRef} className="p-5">
             <Header handlePrint={handlePrint} />
 
-            <MainDetails name={name} address={address} />
+            <MainDetails/>
 
             <ClientDetails
               clientName={clientName}
@@ -306,13 +306,13 @@ function Invoice() {
             <Notes notes={notes} />
 
             <Footer
-              name={name}
-              address={address}
-              website={website}
-              email={email}
-              phone={phone}
-              bankAccount={bankAccount}
-              bankName={bankName}
+              // name={name}
+              // address={address}
+              // website={website}
+              // email={email}
+              // phone={phone}
+              // bankAccount={bankAccount}
+              // bankName={bankName}
             />
           </div>
           {/* <button
