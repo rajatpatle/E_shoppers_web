@@ -19,6 +19,9 @@ import UpdateVendor from './UpdateVendor';
 import DeleteVendor from './DeleteVendor';
 import UpdateInvenotry from './UpdateInvenotry';
 import DeleteInventory from './DeleteInventory';
+import AddVendor from './AddVendor';
+import Gst from './Gst';
+import AddInventory1 from './AddInventory1';
 
 
 function App() {
@@ -122,6 +125,10 @@ function App() {
                           </NavDropdown.Item>
                           <NavDropdown.Divider />
                           <NavDropdown.Item>
+                            <NavLink to="add1">Add Inventory</NavLink>
+                          </NavDropdown.Item>
+                          <NavDropdown.Divider />
+                          <NavDropdown.Item>
                             <NavLink to="update">Update Inventory</NavLink>
                           </NavDropdown.Item>
                           <NavDropdown.Divider />
@@ -135,6 +142,10 @@ function App() {
                     <NavDropdown title="Vendor">
                           <NavDropdown.Item>
                             <NavLink to="vendor" className="me-auto">Order from Vendor</NavLink>
+                          </NavDropdown.Item>
+                          <NavDropdown.Divider />
+                          <NavDropdown.Item>
+                            <NavLink to="add">Add Vendor</NavLink>
                           </NavDropdown.Item>
                           <NavDropdown.Divider />
                           <NavDropdown.Item>
@@ -162,6 +173,22 @@ function App() {
                           </NavDropdown.Item>
                         </NavDropdown>
                     </li>
+                    <li className="nav-item">
+                 
+                    <NavDropdown title="GST">
+                          <NavDropdown.Item>
+                            <NavLink to="gst" className="me-auto">Add Gst</NavLink>
+                          </NavDropdown.Item>
+                          <NavDropdown.Divider />
+                          <NavDropdown.Item>
+                            <NavLink to="report">Update Gst</NavLink>
+                          </NavDropdown.Item>
+                          <NavDropdown.Divider />
+                          <NavDropdown.Item>
+                            <NavLink to="report">Delete Gst</NavLink>
+                          </NavDropdown.Item>
+                        </NavDropdown>
+                    </li>
                 </ul>
 
                 </div>
@@ -171,7 +198,10 @@ function App() {
                 <Route path='/dashboard' element={<DashboardPage/>}></Route>
                 <Route path='/register' element={<RegistrationForm/>}></Route>
                 <Route path='/update' element={<UpdateInvenotry/>}></Route>
+                <Route path='/gst' element={<Gst/>}></Route>
+                <Route path='/add1' element={<AddInventory1/>}></Route>
                 <Route path='/delete' element={<DeleteInventory/>}></Route>
+                <Route path='/add' element={<AddVendor/>}></Route>
                 <Route path='/vendor1' element={<UpdateVendor/>}></Route>
                 <Route path='/vendor2' element={<DeleteVendor/>}></Route>
                 <Route path='/reset' element={<PasswordResetForm/>}></Route>
